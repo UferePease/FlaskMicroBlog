@@ -5,3 +5,4 @@
 /.flaskenv
 /.vscode
 __pycache__/
+/logs
