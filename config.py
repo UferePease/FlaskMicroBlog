@@ -17,4 +17,6 @@ class Config(object):
 
     ADMINS = ['noreply@flaskmicroblog.com']
 
+    LANGUAGES = ['en', 'es']
+
     POSTS_PER_PAGE = 25
