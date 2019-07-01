@@ -1,5 +1,5 @@
 from datetime import datetime
-from app import db, login, app
+from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from hashlib import md5
@@ -80,6 +80,7 @@ class User(UserMixin, db.Model):
 
 
 class Post(db.Model):
+    __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
