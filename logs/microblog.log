@@ -61,3 +61,32 @@ werkzeug.routing.BuildError: Could not build url for endpoint 'register'. Did yo
 2019-06-28 17:14:56,327 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
 2019-06-28 17:20:46,526 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
 2019-06-28 17:24:32,222 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+2019-07-04 05:20:04,122 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
+2019-07-04 05:21:28,840 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
+2019-07-04 05:22:39,547 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
+2019-07-04 05:50:24,578 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
+2019-07-04 05:50:52,453 ERROR: Exception on /search [GET] [in /home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py:1780]
+Traceback (most recent call last):
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1737, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/_compat.py", line 36, in reraise
+    raise value
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/app/main/routes.py", line 144, in search
+    current_app.config['POSTS_PER_PAGE'])
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/app/models.py", line 20, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/app/search.py", line 23, in query_index
+    'from': (page - 1) * per_page, 'size': per_page})
+  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
+    return func(*args, params=params, **kwargs)
+TypeError: search() got an unexpected keyword argument 'doc_type'
