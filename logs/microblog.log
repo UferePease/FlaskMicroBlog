@@ -90,3 +90,5 @@ Traceback (most recent call last):
   File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
     return func(*args, params=params, **kwargs)
 TypeError: search() got an unexpected keyword argument 'doc_type'
+2019-07-10 16:01:40,886 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+2019-07-10 17:56:36,259 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
