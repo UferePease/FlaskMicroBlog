@@ -1,4 +1,13 @@
-2019-06-27 09:17:45,913 ERROR: Exception on /auth/login [GET] [in c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py:1780]
+2019-07-11 17:48:03,522 ERROR: Exception on /user/peace [GET] [in c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py:1780]
+Traceback (most recent call last):
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.last_message_read_time
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py", line 2311, in wsgi_app
     response = self.full_dispatch_request()
@@ -8,87 +17,66 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\_compat.py", line 36, in reraise
     raise value
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py", line 1832, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py", line 1818, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\auth\routes.py", line 28, in login
-    return render_template('auth/login.html', title=_('Sign In'), form=form)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\templating.py", line 135, in render_template
-    context, ctx.app)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\templating.py", line 117, in _render
-    rv = template.render(context)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py", line 1830, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py", line 2106, in preprocess_request
+    rv = func()
+  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\main\routes.py", line 16, in before_request
+    if current_user.is_authenticated:
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\werkzeug\local.py", line 348, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\werkzeug\local.py", line 307, in _get_current_object
+    return self.__local()
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_login\utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_login\utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_login\login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_login\login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\models.py", line 151, in load_user
+    return User.query.get(int(id))
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\query.py", line 959, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\query.py", line 1069, in _get_impl
+    return db_load_fn(self, primary_key_identity)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\loading.py", line 282, in load_on_pk_identity
+    return q.one()
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\query.py", line 3281, in one
+    ret = self.one_or_none()
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\query.py", line 3250, in one_or_none
+    ret = list(self)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\query.py", line 3323, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\orm\query.py", line 3348, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\base.py", line 988, in execute
+    return meth(self, multiparams, params)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\sql\elements.py", line 287, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\base.py", line 1107, in _execute_clauseelement
+    distilled_params,
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    e, statement, parameters, cursor, context
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\base.py", line 1466, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\util\compat.py", line 383, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\util\compat.py", line 128, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\templates\auth\login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\templates\base.html", line 48, in block "content"
-    {% block app_content %}{% endblock %}
-  File "C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\templates\auth\login.html", line 12, in block "app_content"
-    <p>{{ _('New User?') }} <a href="{{ url_for('register') }}">{{ _('Click to Register!') }}</a></p>
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\app.py", line 2080, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\_compat.py", line 36, in reraise
-    raise value
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\flask\helpers.py", line 345, in url_for
-    force_external=external)
-  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\werkzeug\routing.py", line 2007, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'register'. Did you mean 'auth.register' instead?
-2019-06-27 09:19:09,558 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:74]
-2019-06-27 09:20:26,505 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:74]
-2019-06-27 09:20:35,155 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:74]
-2019-06-27 09:24:02,430 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:74]
-2019-06-27 10:58:29,927 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:74]
-2019-06-28 17:14:56,327 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
-2019-06-28 17:20:46,526 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
-2019-06-28 17:24:32,222 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
-2019-07-04 05:20:04,122 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
-2019-07-04 05:21:28,840 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
-2019-07-04 05:22:39,547 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
-2019-07-04 05:50:24,578 INFO: Microblog startup [in /home/uferepeace/Documents/projects/FlaskMicroBlog/app/__init__.py:75]
-2019-07-04 05:50:52,453 ERROR: Exception on /search [GET] [in /home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py:1780]
-Traceback (most recent call last):
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 2311, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1834, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1737, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/_compat.py", line 36, in reraise
-    raise value
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1832, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask/app.py", line 1818, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/app/main/routes.py", line 144, in search
-    current_app.config['POSTS_PER_PAGE'])
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/app/models.py", line 20, in search
-    ids, total = query_index(cls.__tablename__, expression, page, per_page)
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/app/search.py", line 23, in query_index
-    'from': (page - 1) * per_page, 'size': per_page})
-  File "/home/uferepeace/Documents/projects/FlaskMicroBlog/microblogvenv/lib/python3.7/site-packages/elasticsearch/client/utils.py", line 84, in _wrapped
-    return func(*args, params=params, **kwargs)
-TypeError: search() got an unexpected keyword argument 'doc_type'
-2019-07-10 16:01:40,886 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
-2019-07-10 17:56:36,259 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\base.py", line 1244, in _execute_context
+    cursor, statement, parameters, context
+  File "c:\users\prime sources\documents\python_projects\flaskmicroblog\microblogvenv\lib\site-packages\sqlalchemy\engine\default.py", line 550, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.last_message_read_time
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen, user.last_message_read_time AS user_last_message_read_time 
+FROM user 
+WHERE user.id = ?]
+[parameters: (2,)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2019-07-11 17:58:11,891 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+2019-07-11 17:58:36,557 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+2019-07-11 17:58:51,262 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+2019-07-12 16:27:02,460 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
+2019-07-12 16:27:26,307 INFO: Microblog startup [in C:\Users\Prime Sources\Documents\Python_Projects\flaskmicroblog\app\__init__.py:75]
